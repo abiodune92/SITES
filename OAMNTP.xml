@@ -1,0 +1,11 @@
+lt all
+confb+
+gs+
+acc 1 deleteNtpPrimary
+acc 1 deleteNtpSecondary
+acc 1 createNtpPrimary
+10.37.13.161
+16
+1024
+true
+true
