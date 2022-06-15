@@ -1,0 +1,27 @@
+lt all
+bl ipsync
+del ipsync
+confb+
+gs+
+CRE  IpSystem=1,IpAccessHostEt=1,IpSyncRef=2
+10.34.70.34 #TrafficPrimaryNTPServer
+SET  IpSystem=1,IpAccessHostEt=1,IpSyncRef=2 administrativeState 1
+SET  IpSystem=1,IpAccessHostEt=1,IpSyncRef=2 userLabel
+
+CRE  IpSystem=1,IpAccessHostEt=1,IpSyncRef=1
+10.32.69.37 #TrafficSecondaryNTPServer
+SET  IpSystem=1,IpAccessHostEt=1,IpSyncRef=1 administrativeState 1
+SET  IpSystem=1,IpAccessHostEt=1,IpSyncRef=1 userLabel
+
+ACC  TransportNetwork=1,Synchronization=1 addSyncRefResource IpSystem=1,IpAccessHostEt=1,IpSyncRef=1
+IpSystem=1,IpAccessHostEt=1,IpSyncRef=1
+1
+
+ACC  TransportNetwork=1,Synchronization=1 addSyncRefResource IpSystem=1,IpAccessHostEt=1,IpSyncRef=2
+IpSystem=1,IpAccessHostEt=1,IpSyncRef=2
+2
+
+cvms ETNTT
+sts
+rbs
+
